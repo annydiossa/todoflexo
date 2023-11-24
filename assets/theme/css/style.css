@@ -409,18 +409,18 @@ nav .mbr-section-btn {
   position: fixed;
   text-align: right;
   z-index: 5000;
-  color: #ffffff;
+  color: #000000;
   font-size: 22px;
 }
 
 .mbr-arrow-up a {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  color: #fff;
+  color: #000000;
   display: inline-block;
   height: 60px;
   width: 60px;
-  border: 2px solid #fff;
+  border: 2px solid #000000;
   outline-style: none !important;
   position: relative;
   text-decoration: none;
@@ -488,8 +488,8 @@ nav .mbr-section-btn {
   content: "";
   position: absolute;
   display: block;
-  border-bottom: 2.5px solid #fff;
-  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #000000;
+  border-left: 2.5px solid #000000;
   width: 27.8%;
   height: 27.8%;
   left: 50%;
@@ -962,4 +962,14 @@ blockquote {
 	padding: 0;
 	top: 0;
 	left: -2400px;
+}
+
+.btn{
+  margin-left:0.5%;
+  margin-right: 0.5%;
+  cursor: pointer;
+}
+
+.ocultar{
+  display: none;
 }
