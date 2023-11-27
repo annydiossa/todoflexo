@@ -589,31 +589,102 @@
                     <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
                         En <a href="https://www.serviflexarco.com/" class="text-primary" target="_blank">SERVIFLEX ARCO</a>, estamos listos para proporcionarte información detallada y cotizaciones personalizadas. Déjanos tus datos y nos pondremos en contacto contigo rápidamente.
                     </p>
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">¡¡Muchas gracias!!
-Pronto nos pondremos en contacto contigo</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                            Oops...! some problem!
-                        </div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Nombre*" data-form-field="name" class="form-control" value="" id="name-form7-1s" required>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="email">
-                            <input type="email" name="email" placeholder="Email*" data-form-field="email" class="form-control" value="" id="email-form7-1s" required>
-                        </div>
-                        <div data-for="phone" class="col-lg-12 col-md-12 col-sm-12 form-group mb-3">
-                            <input type="tel" name="phone" pattern="[0-9]+" placeholder="Celular*" data-form-field="phone" class="form-control" value="" id="phone-form7-1s" required>
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="textarea">
-                            <textarea name="textarea" placeholder="Mensaje" data-form-field="textarea" class="form-control" id="textarea-form02-39" required></textarea>
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="checkbox">
-                            <input type="checkbox" id="info" name="info">
-                            <label for="info"><h1></h1>Recibir noticias y promociones.</h1></label>
-                        </div>
-                        <div class="col-auto mbr-section-btn align-center"><button type="submit" class="btn btn-primary display-4">Enviar</button></div>
+                    <iframe
+                id="JotFormIFrame-233301029180645"
+                title="Contact Us Form"
+                onload="window.parent.scrollTo(0,0)"
+                allowtransparency="true"
+                allowfullscreen="true"
+                allow="geolocation; microphone; camera"
+                src="https://form.jotform.com/annydiossa/contact-us-form"
+                frameborder="0"
+                style="min-width:100%;max-width:100%;height:539px;border:none;"
+                scrolling="no"
+            >
+            </iframe>
+            <script type="text/javascript">
+            var ifr = document.getElementById("JotFormIFrame-233301029180645");
+            if (ifr) {
+                var src = ifr.src;
+                var iframeParams = [];
+                if (window.location.href && window.location.href.indexOf("?") > -1) {
+                iframeParams = iframeParams.concat(window.location.href.substr(window.location.href.indexOf("?") + 1).split('&'));
+                }
+                if (src && src.indexOf("?") > -1) {
+                iframeParams = iframeParams.concat(src.substr(src.indexOf("?") + 1).split("&"));
+                src = src.substr(0, src.indexOf("?"))
+                }
+                iframeParams.push("isIframeEmbed=1");
+                ifr.src = src + "?" + iframeParams.join('&');
+            }
+            window.handleIFrameMessage = function(e) {
+                if (typeof e.data === 'object') { return; }
+                var args = e.data.split(":");
+                if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); } else { iframe = document.getElementById("JotFormIFrame"); }
+                if (!iframe) { return; }
+                switch (args[0]) {
+                case "scrollIntoView":
+                    iframe.scrollIntoView();
+                    break;
+                case "setHeight":
+                    iframe.style.height = args[1] + "px";
+                    if (!isNaN(args[1]) && parseInt(iframe.style.minHeight) > parseInt(args[1])) {
+                    iframe.style.minHeight = args[1] + "px";
+                    }
+                    break;
+                case "collapseErrorPage":
+                    if (iframe.clientHeight > window.innerHeight) {
+                    iframe.style.height = window.innerHeight + "px";
+                    }
+                    break;
+                case "reloadPage":
+                    window.location.reload();
+                    break;
+                case "loadScript":
+                    if( !window.isPermitted(e.origin, ['jotform.com', 'jotform.pro']) ) { break; }
+                    var src = args[1];
+                    if (args.length > 3) {
+                        src = args[1] + ':' + args[2];
+                    }
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.type = 'text/javascript';
+                    document.body.appendChild(script);
+                    break;
+                case "exitFullscreen":
+                    if      (window.document.exitFullscreen)        window.document.exitFullscreen();
+                    else if (window.document.mozCancelFullScreen)   window.document.mozCancelFullScreen();
+                    else if (window.document.mozCancelFullscreen)   window.document.mozCancelFullScreen();
+                    else if (window.document.webkitExitFullscreen)  window.document.webkitExitFullscreen();
+                    else if (window.document.msExitFullscreen)      window.document.msExitFullscreen();
+                    break;
+                }
+                var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+                if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+                var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
+                iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+                }
+            };
+            window.isPermitted = function(originUrl, whitelisted_domains) {
+                var url = document.createElement('a');
+                url.href = originUrl;
+                var hostname = url.hostname;
+                var result = false;
+                if( typeof hostname !== 'undefined' ) {
+                whitelisted_domains.forEach(function(element) {
+                    if( hostname.slice((-1 * element.length - 1)) === '.'.concat(element) ||  hostname === element ) {
+                        result = true;
+                    }
+                });
+                return result;
+                }
+            };
+            if (window.addEventListener) {
+                window.addEventListener("message", handleIFrameMessage, false);
+            } else if (window.attachEvent) {
+                window.attachEvent("onmessage", handleIFrameMessage);
+            } 
+            </script>
                     </div>
                 </form>
             </div>
